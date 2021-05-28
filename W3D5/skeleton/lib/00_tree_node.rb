@@ -39,16 +39,19 @@ class PolyTreeNode
             result = child.dfs(target)
             return result unless result.nil?
         end
-
         nil
     end
 
     def bfs(target)
         queue = [self]
         until queue.empty?
-            queue.each do |node|
-                return node if node.value == target
+            test = queue.shift
+            if test.value == target
+                return test
+            else
+                queue += test.children
             end
         end
+        nil
     end
 end

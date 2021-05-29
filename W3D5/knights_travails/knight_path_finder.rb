@@ -24,9 +24,9 @@ class KnightPathFinder
 
     def initialize(start, end_pos)
         @start = start
-        @root_node = PolyTreeNode.new(start)
-        #@move_tree = build_move_tree(end_pos)
         @considered_positions = []
+        @root_node = PolyTreeNode.new(start)
+        @move_tree = build_move_tree(end_pos)
     end
     
     def new_move_positions(pos)
@@ -41,24 +41,36 @@ class KnightPathFinder
         children = child_positions.map do |pos|
             PolyTreeNode.new(pos)
         end
+
+        children.each do |child|
+            child.parent = node
+            node.add_child(child)
+        end
         children
+    end
+
+    def build_move_list(node)
+        positions = [node.value]
+        until node.parent.nil?
+            node = node.parent
+            positions.unshift(node.value)
+        end
+        positions
     end
 
     def build_move_tree(end_pos)
         queue = [@root_node]
-        queue += make_children(@root_node)
         until queue.empty?
             next_node = queue.shift
             if next_node.value == end_pos
-                return next_node
+                return build_move_list(next_node)
             else
                 queue += make_children(next_node)
             end
         end
-
         nil
     end
 end
 
-# knight = KnightPathFinder.new([0,0], [1,2])
-# p knight.move_tree
+knight = KnightPathFinder.new([0,0], [8, 8])
+p knight.move_tree

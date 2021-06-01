@@ -32,24 +32,26 @@ class Manager < Employee
     end
     
     def bonus(multiplier)
-
         sum = self.sum_salary
         bonus = sum * multiplier
     end
 
     def sum_salary
-        #BASE
-        return @salary unless self.employees.empty?
-
-        #INDUCTIVE
-
+        sum = 0
         @employees.each do |employee|
             if employee.is_a?(Manager)
-                employee.sum_salary
+                sum += employee.salary + employee.sum_salary
             else
-                return employee.salary
+                sum += employee.salary
             end
-
         end
+        sum
     end
 end
+
+ned = Manager.new("Ned", "Founder", 1000000, nil)
+ned.add_employee("Darren", "TA Manager", 78000, "lskjdfalk")
+ned.employees[0].add_employee("Shawna", "TA", 12000)
+ned.employees[0].add_employee("David", "TA", 10000)
+
+p ned.bonus(2)

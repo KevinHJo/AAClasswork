@@ -1,11 +1,11 @@
 require 'byebug'
-require "./board.rb"
+require_relative "../board.rb"
 require_relative "slideable"
 require_relative "stepable"
 
 class Piece
     attr_reader :pos, :board, :color
-    
+
     def initialize(color, board, pos)
         @color = color
         @board = board
@@ -22,13 +22,13 @@ class Piece
     end
 
     def pos=(val)
+        @pos = val
     end
 
     def Symbol
     end
 
     private
-
     def move_into_check?(end_pos)
     end
 end

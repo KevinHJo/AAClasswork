@@ -43,6 +43,6 @@ class Board
         piece = @rows[start_pos[0]][start_pos[1]] 
         @rows[start_pos[0]][start_pos[1]] = nil
         @rows[end_pos[0]][end_pos[1]] = piece
-
+        @rows[end_pos[0]][end_pos[1]].pos = end_pos
     end
 end

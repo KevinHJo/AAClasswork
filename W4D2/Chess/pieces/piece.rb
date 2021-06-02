@@ -18,7 +18,10 @@ class Piece
     def empty?
     end
 
-    def valid_moves
+    def valid_move?(target) 
+        return false if target[0] > 7 || target[0] < 0 || target[1] > 7 || target[1] < 0
+        return false if @board.rows[target[0]][target[1]].color == self.color
+        true
     end
 
     def pos=(val)

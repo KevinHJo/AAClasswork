@@ -15,12 +15,16 @@ module Slideable
     def next_same_color?(pos, move)
         next_x = move[1] + pos[1]
         next_y = move[0] + pos[0]
-
+        #debugger
+        return false if @board.rows[next_y][next_x].is_a?(NullPiece) || next_x > 7 || next_x < 0 || next_y > 7 || next_y < 0
         @board.rows[next_y][next_x].color == self.color
     end
 
     def different_color?(pos)
-        @board.rows[pos[0]][pos[1]].color != self.color
+        x = pos[1]
+        y = pos[0]
+        return false if @board.rows[pos[0]][pos[1]].is_a?(NullPiece) || x > 7 || x < 0 || y > 7 || y < 0
+        @board.rows[pos[0]][pos[1]].color != self.color && @board.rows[pos[0]][pos[1]].color != nil
     end
 
     def moves
@@ -31,7 +35,7 @@ module Slideable
             x = 0
             y = 0
             
-            until x > 7 || x < 0 || y > 7 || y < 0 || next_same_color?([y,x], dir) || different_color?([y,x]) 
+            until x > 7 || x < 0 || y > 7 || y < 0 || self.next_same_color?([y,x], dir) || self.different_color?([y,x]) 
                 y = dir[0] + possible_moves[-1][0] 
                 x = dir[1] + possible_moves[-1][1]
 

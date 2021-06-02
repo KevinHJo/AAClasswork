@@ -7,12 +7,13 @@ class Board
     def initialize
         @rows = Array.new(8) {Array.new(8)}
         fill_rows
+        @null = NullPiece.instance
     end
 
     def fill_rows
+        self.fill_empty_rows
         self.fill_front_row
         self.fill_back_row
-        self.fill_empty_rows
     end
 
     def fill_front_row
@@ -36,10 +37,9 @@ class Board
     end
 
     def fill_empty_rows
-        null_piece = NullPiece.instance
         (2..5).each do |i1|
             (0..7).each do |i2|
-                @rows[i1][i2] = null_piece
+                @rows[i1][i2] = @null
             end
         end
     end
@@ -49,7 +49,7 @@ class Board
         raise ArgumentError.new "Invalid end position" if end_pos.any? { |ele| ele > 7 || ele < 0 }
 
         piece = @rows[start_pos[0]][start_pos[1]] 
-        @rows[start_pos[0]][start_pos[1]] = nil
+        @rows[start_pos[0]][start_pos[1]] = @null
         @rows[end_pos[0]][end_pos[1]] = piece
         @rows[end_pos[0]][end_pos[1]].pos = end_pos
     end

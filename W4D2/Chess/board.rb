@@ -1,9 +1,13 @@
 require 'byebug'
+require_relative 'pieces/pawn.rb'
 require_relative 'pieces/piece.rb'
 
 class Board
+    attr_reader :rows
+
     def initialize
         @rows = Array.new(8) {Array.new(8)}
+        fill_rows
     end
 
     def fill_rows
@@ -13,10 +17,10 @@ class Board
 
     def fill_front_row
         @rows[1].each_with_index do |ele, i|
-           # @rows[1][i] = Pawn.new("black", self, [1,i]) #INHERITED
+            @rows[1][i] = Pawn.new("black", self, [1,i]) #INHERITED
         end
         @rows[6].each_with_index do |ele, i|
-           # @rows[6][i] = Pawn.new("white", self, [6,i]) #INHERITED
+            @rows[6][i] = Pawn.new("white", self, [6,i]) #INHERITED
         end
     end
 

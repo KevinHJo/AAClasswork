@@ -12,6 +12,17 @@ module Slideable
         return DIAGONAL_DIRS
     end
 
+    def next_same_color?(pos, move)
+        next_x = move[1] + pos[1]
+        next_y = move[0] + pos[0]
+
+        @board.rows[next_y][next_x].color == self.color
+    end
+
+    def different_color?(pos)
+        @board.rows[pos[0]][pos[1]].color != self.color
+    end
+
     def moves
         total_possible_moves = []
         
@@ -20,12 +31,12 @@ module Slideable
             x = 0
             y = 0
             
-            until x > 7 || x < 0 || y > 7 || y < 0
-                x = dir[0] + possible_moves[-1][0] 
-                y = dir[1] + possible_moves[-1][1]
+            until x > 7 || x < 0 || y > 7 || y < 0 || next_same_color?([y,x], dir) || different_color?([y,x]) 
+                y = dir[0] + possible_moves[-1][0] 
+                x = dir[1] + possible_moves[-1][1]
 
-                if x >= 0 && y >= 0 && x < 8 && y < 8 && !total_possible_moves.include?([x,y])
-                    possible_moves << [x, y]
+                if x >= 0 && y >= 0 && x < 8 && y < 8 && !total_possible_moves.include?([y,x])
+                    possible_moves << [y,x]
                 end   
             end  
             total_possible_moves += possible_moves[1..-1]
@@ -36,6 +47,5 @@ module Slideable
 
     private
     def move_dirs
-
     end
 end

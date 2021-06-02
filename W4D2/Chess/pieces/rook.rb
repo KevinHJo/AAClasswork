@@ -5,7 +5,7 @@ class Rook < Piece
     include Slideable
 
     def symbol
-        if @color == "white"
+        if @color == :white
             '♖'
         else
             '♜'
@@ -16,7 +16,4 @@ class Rook < Piece
     def move_dirs
         horizontal_dirs
     end
-
-
-    
 end

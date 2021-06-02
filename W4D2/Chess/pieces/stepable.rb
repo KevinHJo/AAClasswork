@@ -2,10 +2,6 @@ require "byebug"
 
 module Stepable 
     #KNIGHT & KING
-
-    
-
-
     def moves
         possible_moves = []
         move_diffs.each do |mv|
@@ -15,10 +11,7 @@ module Stepable
         possible_moves
     end
 
-private 
+    private 
     def move_diffs
-        [[2,1],[2,-1],[-1,2],[1,2],[-2,-1],[-2,1],[-1,-2],[1,-2]]
     end
-
-
 end

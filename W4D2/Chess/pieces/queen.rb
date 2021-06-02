@@ -8,7 +8,7 @@ class Queen < Piece
     include Slideable
 
     def symbol
-        if @color == "white"
+        if @color == :white
             '♕'
         else
             '♛'

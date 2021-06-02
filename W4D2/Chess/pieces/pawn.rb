@@ -3,7 +3,7 @@ require_relative 'piece.rb'
 
 class Pawn < Piece
     def symbol
-        if @color == "white"
+        if @color == :white
             '♙'
         else
             '♟︎'
@@ -30,7 +30,7 @@ class Pawn < Piece
 
     # private
     def at_start_row?
-        if @color == "black"
+        if @color == :black
             pos[0] == 1
         else
             pos[0] == 6
@@ -38,7 +38,7 @@ class Pawn < Piece
     end
 
     def forward_steps
-        if @color == 'white'
+        if @color == :white
             if at_start_row? && @board.rows[pos[0]-1][pos[1]].nil? && @board.rows[pos[0]-2][pos[1]].nil?
                 [[-1,0], [-2,0]]
             elsif @board.rows[pos[0]-1][pos[1]].nil?
@@ -46,7 +46,7 @@ class Pawn < Piece
             end
         end
         
-        if @color == 'black'
+        if @color == :black
             if at_start_row? && @board.rows[pos[0]+1][pos[1]].nil? && @board.rows[pos[0]+2][pos[1]].nil?
                 [[1,0], [2,0]]
             elsif @board.rows[pos[0]+1][pos[1]].nil?

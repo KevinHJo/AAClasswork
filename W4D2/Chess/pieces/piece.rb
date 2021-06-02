@@ -16,6 +16,7 @@ class Piece
     end
 
     def empty?
+        self.is_a?(NullPiece)
     end
 
     def valid_move?(target) 
@@ -26,9 +27,6 @@ class Piece
 
     def pos=(val)
         @pos = val
-    end
-
-    def Symbol
     end
 
     private

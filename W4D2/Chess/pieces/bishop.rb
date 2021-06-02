@@ -5,7 +5,7 @@ class Bishop < Piece
     include Slideable
 
     def symbol
-        if @color == "white"
+        if @color == :white
             '♗'
         else
             '♝'

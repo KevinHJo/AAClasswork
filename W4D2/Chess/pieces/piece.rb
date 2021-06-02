@@ -1,5 +1,8 @@
 require 'byebug'
-require "../board.rb"
+require_relative "../board.rb"
+require_relative "slideable"
+require_relative "stepable"
+
 class Piece
     attr_reader :pos
     

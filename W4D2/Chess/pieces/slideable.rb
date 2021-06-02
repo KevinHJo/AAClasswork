@@ -13,41 +13,25 @@ module Slideable
     end
 
     def moves
-
         total_possible_moves = []
-
         
         move_dirs.each do |dir|
             possible_moves = [pos]
+            x = 0
+            y = 0
+            
             until x > 7 || x < 0 || y > 7 || y < 0
-                
                 x = dir[0] + possible_moves[-1][0] 
                 y = dir[1] + possible_moves[-1][1]
 
-                if x > 0 && y > 0 && x < 8 && y < 8 && !total_possible_moves.include?([x,y])
+                if x >= 0 && y >= 0 && x < 8 && y < 8 && !total_possible_moves.include?([x,y])
                     possible_moves << [x, y]
                 end   
             end  
             total_possible_moves += possible_moves[1..-1]
         end
 
-       # until possible_moves.empty?
-        #     total_possible_moves += possible_moves
-
-        #     prev_moves = possible_moves
-        #     possible_moves = []
-
-        #     prev_moves.each do |mv|
-        #         move_dirs.each do |dir|
-        #             x = dir[0] + mv[0]
-        #             y = dir[1] + mv[1]
-
-        #             if x > 0 && y > 0 && x < 8 && y < 8 && !total_possible_moves.include?([x,y])
-        #                 possible_moves << [x, y]
-        #             end     
-        #         end
-        #     end
-         total_possible_moves
+        total_possible_moves
     end
 
     private

@@ -13,9 +13,16 @@ module Slideable
     end
 
     def moves
-        
+        possible_moves = []
+
+        move_dirs.each do |dir|
+            possible_moves << [dir[0] + pos[0], dir[1] + pos[1]]
+        end
+
+        possible_moves
     end
 
+    private
     def move_dirs
 
     end

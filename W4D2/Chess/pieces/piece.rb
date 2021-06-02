@@ -1,5 +1,5 @@
 require 'byebug'
-
+require "../board.rb"
 class Piece
     attr_reader :pos
     

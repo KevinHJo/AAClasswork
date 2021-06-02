@@ -1,6 +1,6 @@
 require "byebug"
 
-module Slideable
+module Slideable 
     HORIZONTAL_DIRS = [[1,0],[-1,0],[0,1],[0,-1]]
     DIAGONAL_DIRS = [[1,1],[-1,1],[-1,-1],[1,-1]]
 
@@ -13,13 +13,41 @@ module Slideable
     end
 
     def moves
-        possible_moves = []
 
+        total_possible_moves = []
+
+        
         move_dirs.each do |dir|
-            possible_moves << [dir[0] + pos[0], dir[1] + pos[1]]
+            possible_moves = [pos]
+            until x > 7 || x < 0 || y > 7 || y < 0
+                
+                x = dir[0] + possible_moves[-1][0] 
+                y = dir[1] + possible_moves[-1][1]
+
+                if x > 0 && y > 0 && x < 8 && y < 8 && !total_possible_moves.include?([x,y])
+                    possible_moves << [x, y]
+                end   
+            end  
+            total_possible_moves += possible_moves[1..-1]
         end
 
-        possible_moves
+       # until possible_moves.empty?
+        #     total_possible_moves += possible_moves
+
+        #     prev_moves = possible_moves
+        #     possible_moves = []
+
+        #     prev_moves.each do |mv|
+        #         move_dirs.each do |dir|
+        #             x = dir[0] + mv[0]
+        #             y = dir[1] + mv[1]
+
+        #             if x > 0 && y > 0 && x < 8 && y < 8 && !total_possible_moves.include?([x,y])
+        #                 possible_moves << [x, y]
+        #             end     
+        #         end
+        #     end
+         total_possible_moves
     end
 
     private

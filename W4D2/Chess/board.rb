@@ -10,12 +10,17 @@ class Board
         fill_rows
     end
 
+    
     def [](y,x)
         self.rows[y][x]
     end
 
     def []=(y,x,val)
         self.rows[y][x] = val
+    end
+
+    def valid_pos?(pos)
+        pos[0] > 0 && pos[0] < 8 && pos[1] > 0 && pos[1] < 8 
     end
 
     def fill_rows

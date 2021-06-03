@@ -12,7 +12,7 @@ class Knight < Piece
         end
     end
 
-    private
+    protected
     def move_diffs
         [[2,1],[2,-1],[-1,2],[1,2],[-2,-1],[-2,1],[-1,-2],[1,-2]]
     end

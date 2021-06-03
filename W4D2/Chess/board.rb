@@ -6,14 +6,22 @@ class Board
 
     def initialize
         @rows = Array.new(8) {Array.new(8)}
-        fill_rows
         @null = NullPiece.instance
+        fill_rows
+    end
+
+    def [](y,x)
+        self.rows[y][x]
+    end
+
+    def []=(y,x,val)
+        self.rows[y][x] = val
     end
 
     def fill_rows
-        self.fill_empty_rows
         self.fill_front_row
         self.fill_back_row
+        self.fill_empty_rows
     end
 
     def fill_front_row
@@ -45,8 +53,8 @@ class Board
     end
 
     def move_piece(start_pos, end_pos) # => [num, num]
-        raise ArgumentError.new "Invalid start position" if @rows[start_pos[0]][start_pos[1]].nil? || start_pos.any? { |ele| ele > 7 || ele < 0 }
-        raise ArgumentError.new "Invalid end position" if end_pos.any? { |ele| ele > 7 || ele < 0 }
+        raise ArgumentError.new "Invalid start position" if @rows[start_pos[0]][start_pos[1]].is_a?(NullPiece) || start_pos.any? { |ele| ele > 7 || ele < 0 }
+        raise ArgumentError.new "Invalid end position" if end_pos.any? { |ele| ele > 7 || ele < 0 } || !@rows[start_pos[0]][start_pos[1]].moves.include?(end_pos)
 
         piece = @rows[start_pos[0]][start_pos[1]] 
         @rows[start_pos[0]][start_pos[1]] = @null

@@ -9,9 +9,9 @@ class Queen < Piece
 
     def symbol
         if @color == :white
-            '♕'
+            ' ♕ '
         else
-            '♛'
+            ' ♛ '
         end
     end
     

@@ -4,9 +4,9 @@ require_relative 'piece.rb'
 class Pawn < Piece
     def symbol
         if @color == :white
-            '♙'
+            ' ♙ '
         else
-            '♟︎'
+            ' ♟︎ '
         end
     end
 

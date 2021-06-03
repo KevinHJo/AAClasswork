@@ -6,9 +6,9 @@ class Bishop < Piece
 
     def symbol
         if @color == :white
-            '♗'
+            ' ♗ '
         else
-            '♝'
+            ' ♝ '
         end
     end
 

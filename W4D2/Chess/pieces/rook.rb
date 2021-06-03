@@ -6,9 +6,9 @@ class Rook < Piece
 
     def symbol
         if @color == :white
-            '♖'
+            ' ♖ '
         else
-            '♜'
+            ' ♜ '
         end
     end
 

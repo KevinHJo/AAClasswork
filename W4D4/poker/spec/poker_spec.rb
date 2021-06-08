@@ -51,8 +51,8 @@ describe 'Hand' do
 
     context '#high_card' do
         it 'returns an array of card values sorted from highest to lowest' do
-            hand1.cards = [Card.new(:J, :♠), Card.new(10, :♦), Card.new(6, :♠), Card.new(9, :♦), Card.new(7, :♠)]
-            expect(hand1.high_card).to eq([:J, 10, 9, 7, 6])
+            hand1.cards = [Card.new(:J, :♠), Card.new(10, :♦), Card.new(6, :♠), Card.new(:A, :♦), Card.new(7, :♠)]
+            expect(hand1.high_card).to eq([:A, :J, 10, 7, 6, :A])
         end
     end
 
@@ -96,6 +96,13 @@ describe 'Hand' do
         it 'returns false if the hand does not contain 5 cards of sequential rank' do
             hand1.cards = [Card.new(7, :♠), Card.new(6, :♦), Card.new(5, :♥), Card.new(4, :♦), Card.new(2, :♠)]
             expect(hand1.straight?).to be false
+        end
+
+        it 'accounts for the fact that an Ace exists at both the beginning and the end of the sequence' do
+            hand1.cards = [Card.new(5, :♠), Card.new(4, :♦), Card.new(3, :♥), Card.new(2, :♦), Card.new(:A, :♠)]
+            hand2.cards = [Card.new(:A, :♠), Card.new(:K, :♦), Card.new(:Q, :♥), Card.new(:J, :♦), Card.new(10, :♠)]
+            expect(hand1.straight?).to be true
+            expect(hand2.straight?).to be true
         end
     end
 
@@ -141,6 +148,13 @@ describe 'Hand' do
         it 'returns true if the hand contains cards with 5 sequential values in the same suit' do
             hand1.cards = [Card.new(7, :♠), Card.new(6, :♠), Card.new(5, :♠), Card.new(4, :♠), Card.new(3, :♠)]
             expect(hand1.straight_flush?).to be true
+        end
+
+        it 'accounts for the fact that an Ace exists at both the beginning and the end of the sequence' do
+            hand1.cards = [Card.new(5, :♠), Card.new(4, :♠), Card.new(3, :♠), Card.new(2, :♠), Card.new(:A, :♠)]
+            hand2.cards = [Card.new(:A, :♠), Card.new(:K, :♠), Card.new(:Q, :♠), Card.new(:J, :♠), Card.new(10, :♠)]
+            expect(hand1.straight_flush?).to be true
+            expect(hand2.straight_flush?).to be true
         end
     end
 end

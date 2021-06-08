@@ -2,7 +2,7 @@ require 'byebug'
 require_relative 'deck'
 
 class Hand
-    ORDER = [:A, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, :J, :Q, :K, :A]
+    ORDER = [:A, 2, 3, 4, 5, 6, 7, 8, 9, 10, :J, :Q, :K, :A]
     attr_reader :cards
 
     def initialize
@@ -16,6 +16,11 @@ class Hand
     def sort_cards_by_value
         sorted = cards.sort_by { |card| order.index(card.value) }
         sorted.map!(&:value)
+        if sorted.include?(:A)
+            sorted.unshift(:A) if sorted[-1] == :A
+            sorted.push(:A) if sorted[0] == :A
+        end
+        sorted
     end
     
     def high_card
@@ -53,10 +58,15 @@ class Hand
 
     def straight?
         sorted = sort_cards_by_value
+        sorted.pop if sorted.include?(:A) && sorted.include?(2)
+        sorted.shift if sorted.include?(:A) && sorted.include?(:K)
         sorted.each_with_index do |value, i|
-            unless i == sorted.length - 1  
+            if i != sorted.length - 1 && sorted[i+1] != :A
                 next_value = sorted[i+1]
                 return false if order.index(next_value) - order.index(value) != 1
+            elsif i != sorted.length - 1 && sorted[i+1] == :A
+                next_value = 13
+                return false if next_value - order.index(value) != 1
             end
         end
         true

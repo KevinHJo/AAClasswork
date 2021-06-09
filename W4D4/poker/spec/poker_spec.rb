@@ -32,13 +32,32 @@ describe 'Deck' do
             expect(unique_cards.uniq.length).to eq(52)
         end
     end
+
+    context '#shuffle_deck' do
+        it 'randomly changes the order of the deck' do
+            deck.shuffle_deck
+            expect(deck.cards).not_to eq(Deck.new.cards)
+        end
+    end
+
+    context '#take_top_card' do
+        it 'selects the top card from the deck' do
+            expect(deck.take_top_card.value).to eq(Deck.new.cards[0].value)
+            expect(deck.take_top_card.suit).to eq(Deck.new.cards[0].suit)
+        end
+    end
 end
 
 describe 'Hand' do
-    subject(:hand1) { Hand.new }
-    subject(:hand2) { Hand.new }
+    let(:deck) { Deck.new }
+    subject(:hand1) { Hand.new(deck) }
+    subject(:hand2) { Hand.new(deck) }
 
     context '#initialize' do
+        it 'assigns @deck as the given argument' do
+            expect(hand1.deck).to be(deck)
+        end
+
         it 'initializes with a cards instance variable as an array of Card instances' do
             expect(hand1.cards.all? { |card| card.is_a?(Card) }).to be true
         end
@@ -46,6 +65,16 @@ describe 'Hand' do
         it 'cards instance variable is populated with 5 random cards from a Deck instance' do
             expect(hand1.cards.length).to eq(5)
             expect(hand1.cards).to_not eq(hand2.cards)
+        end
+    end
+
+    context '#grab_hand' do
+        it 'removes the top 5 cards from the shuffled deck' do
+            expect(hand1.deck.cards.length).to eq(47)
+        end
+
+        it 'assigns the 5 cards to @cards' do
+            expect(hand1.cards.length).to eq(5)
         end
     end
 

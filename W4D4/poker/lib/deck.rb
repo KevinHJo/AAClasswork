@@ -19,6 +19,14 @@ class Deck
         VALUES
     end
 
+    def take_top_card
+        @cards.shift
+    end
+
+    def shuffle_deck
+        @cards = cards.shuffle
+    end
+
     def fill_deck
         suits.each do |suit|
             values.each do |value|

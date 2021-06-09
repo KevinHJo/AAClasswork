@@ -3,10 +3,18 @@ require_relative 'deck'
 
 class Hand
     ORDER = [:A, 2, 3, 4, 5, 6, 7, 8, 9, 10, :J, :Q, :K, :A]
-    attr_reader :cards
+    attr_reader :cards, :deck
 
-    def initialize
-        @cards = Deck.new.cards.sample(5)
+    def initialize(deck)
+        @deck = deck
+        @cards = grab_hand
+    end
+
+    def grab_hand
+        cards = []
+        @deck.shuffle_deck
+        5.times { cards << @deck.take_top_card }
+        cards
     end
 
     def order
@@ -94,10 +102,6 @@ class Hand
 
     def straight_flush?
         straight? && flush?
-    end
-
-    def hierarchy
-        
     end
 
     # private #=> COMMENT OUT FOR TESTING PURPOSES

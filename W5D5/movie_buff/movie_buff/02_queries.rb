@@ -33,7 +33,6 @@ def vanity_projects
   # Note: Directors appear in the 'actors' table.
   Movie
     .select(:id, :title, directors name)
-    .
 end
 
 def most_supportive

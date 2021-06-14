@@ -1,0 +1,17 @@
+.ingredients-aside {
+    float: left;
+}
+
+.main {
+    float: right;
+}
+
+body:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+figure {
+    width: 500px;
+}

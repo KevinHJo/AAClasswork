@@ -19,4 +19,8 @@ class Actor < ApplicationRecord
     class_name: :Movie,
     foreign_key: :director_id,
     primary_key: :id
+
+  has_many :costars,
+    through: :castings,
+    source: :actor
 end

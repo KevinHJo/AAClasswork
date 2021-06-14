@@ -11,19 +11,22 @@ end
 
 def golden_age
   # Find the decade with the highest average movie score.
-  year = Movie
+  movie = Movie
     .select('AVG(score) AS avg_score, (yr / 10) * 10 AS decade')
     .group(:decade)
     .order('avg_score DESC')
     .limit(1)
-  year[0]
+  movie.first.decade
 end
 
 def costars(name)
   # List the names of the actors that the named actor has ever
   # appeared with.
   # Hint: use a subquery
-
+  Actor
+    .joins(:costars)
+    .where(name: name)
+    .pluck(:name)
 end
 
 def actor_out_of_work

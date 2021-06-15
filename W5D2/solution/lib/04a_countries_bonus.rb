@@ -10,29 +10,26 @@
 
 require_relative './sqlzoo.rb'
 
+# BONUS QUESTIONS: These problems require knowledge of aggregate
+# functions. Attempt them after completing section 05.
+
 def highest_gdp
   # Which countries have a GDP greater than every country in Europe? (Give the
   # name only. Some countries may have NULL gdp values)
   execute(<<-SQL)
-  SELECT 
-    name
-  FROM 
-    countries
-  WHERE
-    gdp > (
-      SELECT 
-        gdp
-      FROM
-        countries
-      WHERE
-        continent = 'Europe'
-        AND
-        gdp IS NOT NULL
-      ORDER BY
-        gdp DESC
-      LIMIT
-        1
-    )
+    SELECT
+      countries.name
+    FROM
+      countries
+    WHERE
+      countries.gdp > (
+        SELECT
+          MAX(c2.gdp)
+        FROM
+          countries c2
+        WHERE
+          c2.continent = 'Europe'
+      );
   SQL
 end
 
@@ -40,19 +37,21 @@ def largest_in_continent
   # Find the largest country (by area) in each continent. Show the continent,
   # name, and area.
   execute(<<-SQL)
-  SELECT
-    DISTINCT continent, name, area
-  FROM
-    countries
-  WHERE
-    area IN ( 
-      SELECT
-        MAX(area) AS max_area
-      FROM
-        countries
-      GROUP BY 
-        continent
-    )
+    SELECT
+      c1.continent,
+      c1.name,
+      c1.area
+    FROM
+      countries c1
+    WHERE
+      c1.area = (
+        SELECT
+          MAX(c2.area)
+        FROM
+           countries c2
+        WHERE
+          c1.continent = c2.continent
+      );
   SQL
 end
 

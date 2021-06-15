@@ -1,0 +1,124 @@
+\q
+\q
+CREATE DATABASE bank;
+\q
+\d
+cat learning_sql_example_postgres.sql | psql bank
+\d
+\q
+\d
+cat learning_sql_example_postgres.sql | psql bank
+\q
+cat learning_sql_example_postgres.sql | psql bank
+\d
+DYLD_LIBRARY_PATH
+\q
+psql sqlzoo
+\q
+\q
+SELECT * FROM nobels
+;
+c
+\q
+\d
+\q
+exit
+\q
+SELECT * FROM movies ORDER BY yr LIMIT 1;
+SELECT * FROM movies ORDER BY yr DESC LIMIT 1;
+quit
+\q
+data/import_cat_db.sh
+\q
+\d
+\q
+\d
+\toys
+\?
+\table toys
+\schema
+\schema toys
+\d toys
+SELECT * FROM toys
+;
+SELECT * FROM toys WHERE color = 'Gold';
+SELECT * FROM toys WHERE name = 'Bone Club'
+;
+SELECT cats.id FROM cats WHERE name = 'Jet';
+SELECT toys.name, COUNT(*) AS number_of_toys
+FROM toys
+JOIN
+cat_toys ON cat_id = 1
+GROUP by toys.name
+ORDER BY toys.name
+;
+\c
+clear
+c
+\q
+SELECT * FROM toys
+;
+SELECT * FROM cat_toys
+;
+SELECT * FROM cats JOIN cat_toys ON cat_toys.cat_id = cats.id ORDER BY cats.name
+;
+SELECT * FROM toys WHERE name LIKE 'Tiger'
+;
+SELECT * FROM cat_toys WHERE toy_id = 2;
+SELECT * FROM cats JOIN cat_toys ON cats.id = cat_toys.id JOIN toys ON cat_toys.id = 2;
+SELECT * FROM cat_toys
+;\q
+SELECT
+          id
+        FROM
+          toys
+        WHERE
+          name = 'Orange'
+        ORDER BY
+          price DESC
+        LIMIT
+          1;
+SELECT id FROM toys WHERE name = 'Orange' ORDER BY price DESC;
+SELECT id FROM toys WHERE name LIKE 'Orange' ORDER BY price DESC;
+SELECT * FROM toys WHERE name LIKE 'Orange'
+;
+SELECT * FROM toys
+;
+SELECT * FROM toys WHERE id = 2;
+SELECT id FROM toys WHERE name = 'Tiger' ORDER BY price DESC LIMIT 1;
+SELECT * FROM toys WHERE toys.id = 2;
+SELECT * FROM cats JOIN cat_toys ON cats.id = cat_toys.cat_id;
+SELECT * FROM cats JOIN cat_toys ON cats.id = cat_toys.cat_id ORDER BY cats.id;
+SELECT * FROM cats JOIN cat_toys ON cats.id = cat_toys.cat_id JOIN toys ON cat_tocORDER BY cats.id;
+\q
+SELECT cats.name, toys.name, toys.color
+FROM cats
+\q
+SELECT cats.name, toys.name, toys.color FROM cats JOIN cat_toys ON cats.id = cat_toys.cat_id JOIN toys ON cat_toys.id = toys.id WHERE toys.id = 2 ORDER BY cats.id;
+SELECT cats.name, toys.name, toys.color FROM cats JOIN cat_toys ON cats.id = cat_toys.cat_id JOIN toys ON cat_toys.id = 2 ORDER BY cats.id;
+SELECT * FROM cats JOIN cat_toys ON cats.id = cat_toys.cat_id JOIN toys ON cat_toys.id\q
+\d
+\q
+c
+\q
+SELECT
+\q
+SELECT * FROM coutries
+;
+SELECT * FROM countries;
+SELECT MIN(population) FROM countries;
+SELECT MIN(population) FROM countries GROUP BY continent;
+SELECT * FROM countries GROUP BY continent
+;
+SELECT continent  FROM countries GROUP BY continent
+;
+SELECT c1 FROM countries;
+c
+SELECT gdp FROM countries WHERE continent = 'Africa'
+;
+SELECT gdp FROM countries WHERE continent = 'Africa'
+;
+\schema countries
+\scheme countries
+\d
+\s countries

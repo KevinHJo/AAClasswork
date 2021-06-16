@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     def index
-        render plain:"I'm in the index action!"
+        render json: User.all
     end
 
     def create
@@ -9,6 +9,6 @@ class UsersController < ApplicationController
     end
 
     def show
-        render json: params
+        render json: User.find(params[:id])
     end
 end

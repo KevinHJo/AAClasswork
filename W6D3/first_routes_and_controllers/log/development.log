@@ -1163,3 +1163,179 @@ Processing by UsersController#show as */*
 Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/users" for ::1 at 2021-06-16 17:26:59 -0400
+Processing by UsersController#index as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 33ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2021-06-16 17:29:20 -0400
+Processing by UsersController#index as */*
+  Parameters: {"login"=>{"name"=>{"first"=>"poop", "last"=>"pee"}, "password"=>"[FILTERED]"}, "message"=>"hello"}
+  Rendering text template
+  Rendered text template (0.1ms)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users?some_category[a_key]=another+value&some_category[a_second_key]=yet+another+value" for ::1 at 2021-06-16 17:33:33 -0400
+Started GET "/users?some_category[a_key]=another+value&some_category[a_second_key]=yet+another+value" for ::1 at 2021-06-16 17:33:33 -0400
+Started GET "/users?some_category[a_key]=another+value&some_category[a_second_key]=yet+another+value" for ::1 at 2021-06-16 17:33:33 -0400
+Started GET "/users?login[first_name]=value&login[last_name]=value2&login[hi]=bye&lasdfj=alsdkfj" for ::1 at 2021-06-16 17:33:33 -0400
+Started GET "/users?login[first_name]=value&login[last_name]=value2&login[hi]=bye&lasdfj=alsdkfj" for ::1 at 2021-06-16 17:33:33 -0400
+Processing by UsersController#index as */*
+Processing by UsersController#index as */*
+  Parameters: {"some_category"=>{"a_key"=>"another value", "a_second_key"=>"yet another value"}}
+  Rendering text template
+  Parameters: {"some_category"=>{"a_key"=>"another value", "a_second_key"=>"yet another value"}}
+  Rendering text template
+Processing by UsersController#index as */*
+  Parameters: {"login"=>{"first_name"=>"value", "last_name"=>"value2", "hi"=>"bye"}, "message"=>"hello", "lasdfj"=>"alsdkfj"}
+Processing by UsersController#index as */*
+  Rendered text template (0.0ms)
+  Rendered text template (0.0ms)
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+  Parameters: {"login"=>{"name"=>{"first"=>"poop", "last"=>"pee"}, "password"=>"[FILTERED]"}, "message"=>"hello", "some_category"=>{"a_key"=>"another value", "a_second_key"=>"yet another value"}}
+Processing by UsersController#index as */*
+Completed 200 OK in 3ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users?login[first_name]=value" for ::1 at 2021-06-16 17:33:33 -0400
+  Rendering text template
+Started GET "/users" for ::1 at 2021-06-16 17:33:33 -0400
+  Parameters: {"login"=>{"first_name"=>"value", "last_name"=>"value2", "hi"=>"bye"}, "message"=>"hello", "lasdfj"=>"alsdkfj"}
+Processing by UsersController#index as */*
+  Rendered text template (0.0ms)
+Processing by UsersController#index as */*
+  Rendering text template
+  Parameters: {"login"=>{"first_name"=>"value"}, "message"=>"hello"}
+Completed 200 OK in 7ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+  Parameters: {"login"=>{"name"=>{"first"=>"poop", "last"=>"pee"}, "password"=>"[FILTERED]"}, "message"=>"hello"}
+  Rendered text template (0.0ms)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+  Rendering text template
+  Rendered text template (0.0ms)
+  Rendering text template
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+
+
+  Rendered text template (0.0ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2021-06-16 17:33:45 -0400
+Processing by UsersController#index as */*
+  Parameters: {"login"=>{"name"=>{"first"=>"poop", "last"=>"pee"}, "password"=>"[FILTERED]"}, "message"=>"hello"}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users?login[first_name]=value" for ::1 at 2021-06-16 17:34:00 -0400
+Processing by UsersController#index as */*
+  Parameters: {"login"=>{"first_name"=>"value"}, "message"=>"hello"}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users?login[first_name]=value&login[last_name]=value2&login[hi]=bye&lasdfj=alsdkfj" for ::1 at 2021-06-16 17:34:18 -0400
+Processing by UsersController#index as */*
+  Parameters: {"login"=>{"first_name"=>"value", "last_name"=>"value2", "hi"=>"bye"}, "message"=>"hello", "lasdfj"=>"alsdkfj"}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users?login[first_name]=value&login[last_name]=value2&login[hi]=bye&lasdfj=alsdkfj" for ::1 at 2021-06-16 17:34:37 -0400
+Processing by UsersController#index as */*
+  Parameters: {"login"=>{"first_name"=>"value", "last_name"=>"value2", "hi"=>"bye"}, "lasdfj"=>"alsdkfj"}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (20.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2711202859307440470)[0m
+  ↳ bin/rails:9
+  [1m[35m (6.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20210616213628)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210616213628_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210616213628"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (9.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-06-16 21:37:43.435704"], ["updated_at", "2021-06-16 21:37:43.435704"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2711202859307440470)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (10.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Create (5.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Ben"], ["email", "Ben@ben.com"], ["created_at", "2021-06-16 21:42:53.729729"], ["updated_at", "2021-06-16 21:42:53.729729"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Kevin"], ["email", "Kevin@kevin.com"], ["created_at", "2021-06-16 21:42:53.741245"], ["updated_at", "2021-06-16 21:42:53.741245"]]
+  ↳ db/seeds.rb:14
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+Started GET "/users/2" for ::1 at 2021-06-16 17:44:29 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/kevin/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2021-06-16 17:47:28 -0400
+Processing by UsersController#index as */*
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2021-06-16 17:47:44 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (15.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 49ms (Views: 12.6ms | ActiveRecord: 22.7ms)
+
+
+Started GET "/users/2" for ::1 at 2021-06-16 17:48:50 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 3.5ms)
+
+

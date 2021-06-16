@@ -5,10 +5,32 @@ class UsersController < ApplicationController
     end
 
     def create
-        render json: params    
+        user = User.new(user_param)
+        # debugger
+        if user.save!
+            render json: user
+        else
+            render json: user.error.full_messages , status: 422
+        end
+
+        # render json: user_param
     end
 
     def show
         render json: User.find(params[:id])
+    end
+    
+    def update
+        User.update(params[:id], params.require(:user).permit(:name,:email))
+        render json: params
+        # render json: User.find(params[:id])
+    end
+    
+    def destroy
+        User.destroy(params[:id])
+    end
+
+    def user_param
+        params.require(:user).permit(:name, :email)
     end
 end

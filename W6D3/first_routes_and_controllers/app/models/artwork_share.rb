@@ -17,4 +17,9 @@ class ArtworkShare < ApplicationRecord
     belongs_to :viewer,
         class_name: :User,
         foreign_key: :viewer_id
+
+    def save!
+        super
+        ArtworkCollection.create(collection_id: User.find(self.viewer_id).collections.first.id, artwork_id: self.artwork_id)
+    end
 end

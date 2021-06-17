@@ -24,4 +24,22 @@ class User < ApplicationRecord
     has_many :shared_artworks,
         through: :shares,
         source: :artwork
+
+    has_many :collections,
+        class_name: :Collection,
+        foreign_key: :user_id
+
+    has_many :collected_arts,
+        through: :collections,
+        source: :artworks
+
+    has_many :comments,
+        class_name: :Comment,
+        foreign_key: :author_id,
+        dependent: :destroy
+
+    def save!
+        super
+        Collection.create(name: "#{self.username}\'s collection", user_id: self.id)
+    end
 end

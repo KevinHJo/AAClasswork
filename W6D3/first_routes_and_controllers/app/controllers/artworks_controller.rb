@@ -1,21 +1,7 @@
 class ArtworksController < ApplicationController
 
     def index
-        # debugger
-        # shared_art =  Artwork.joins(:shared_viewers).where(users: {id: params[:user_id] })
-        # artworks = Artwork.where(artist_id: params[:user_id])
-        
-        # if shared_art.first.id.nil? && artworks.first.id.nil?
-        #     render plain: 'no artwork available'
-        # elsif shared_art.first.id.nil? 
-        #     results = artworks
-        # elsif artworks.first.id.nil?
-        #     results = shared_art
-        # else
-        #     results = 
-        # end
-        
-        results = shared_art.or(artworks)
+        results = User.find(params[:user_id]).collected_arts
         render json: results
     end
 

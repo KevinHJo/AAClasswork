@@ -13,10 +13,8 @@ ArtworkShare.destroy_all
 #Comment.destroy_all
 #Like.destroy_all
 
-ben = User.create(username: 'Ben')
-
-kevin = User.create(username: 'Kevin')
-#Artists
+ben = User.create!(username: 'Ben')
+kevin = User.create!(username: 'Kevin')
 mike = User.create!({username: "Mike"})
 kiet = User.create!({username: "Kiet"})
 joe = User.create!({username: "Joe"})
@@ -41,3 +39,24 @@ art_shares3 = ArtworkShare.create!({artwork_id: art3.id, viewer_id: nana.id})
 art_shares4 = ArtworkShare.create!({artwork_id: art4.id, viewer_id: nana.id})
 art_shares5 = ArtworkShare.create!({artwork_id: art5.id, viewer_id: waffle.id})
 art_shares6 = ArtworkShare.create!({artwork_id: art6.id, viewer_id: waffle.id})
+art_shares7 = ArtworkShare.create!({artwork_id: art1.id, viewer_id: ben.id})
+art_shares8 = ArtworkShare.create!({artwork_id: art2.id, viewer_id: kevin.id})
+art_shares9 = ArtworkShare.create!({artwork_id: art3.id, viewer_id: mike.id})
+
+#Comments
+comment1 = Comment.create!(author_id: ben.id, body: 'oogabooga', artwork_id: art1.id)
+comment2 = Comment.create!(author_id: kevin.id, body: 'good', artwork_id: art1.id)
+comment3 = Comment.create!(author_id: mike.id, body: 'gross', artwork_id: art2.id)
+comment4 = Comment.create!(author_id: kiet.id, body: 'no u', artwork_id: art2.id)
+
+#Collections
+# collection1 = Collection.create!(user_id: kevin.id, name: 'kevin collection')
+# collection2 = Collection.create!(user_id: ben.id, name: 'ben collection')
+
+# #ArtworkCollections
+# art_collect1 = ArtworkCollection.create!(collection_id: collection1.id, artwork_id: art1.id)
+# art_collect2 = ArtworkCollection.create!(collection_id: collection1.id, artwork_id: art2.id)
+# art_collect3 = ArtworkCollection.create!(collection_id: collection1.id, artwork_id: art3.id)
+# art_collect4 = ArtworkCollection.create!(collection_id: collection2.id, artwork_id: art4.id)
+# art_collect5 = ArtworkCollection.create!(collection_id: collection2.id, artwork_id: art5.id)
+# art_collect6 = ArtworkCollection.create!(collection_id: collection2.id, artwork_id: art6.id)

@@ -2,10 +2,12 @@
 #
 # Table name: artworks
 #
-#  id        :bigint           not null, primary key
-#  title     :string           not null
-#  image_url :string           not null
-#  artist_id :integer          not null
+#  id         :bigint           not null, primary key
+#  title      :string           not null
+#  image_url  :string           not null
+#  artist_id  :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 class Artwork < ApplicationRecord
     validates :title, presence: true
@@ -27,4 +29,13 @@ class Artwork < ApplicationRecord
         through: :shares,
         source: :viewer
 
+    has_many :comments,
+        class_name: :Comment,
+        foreign_key: :artwork_id,
+        dependent: :destroy
+
+    def save!
+        super
+        ArtworkCollection.create(collection_id: User.find(self.artist_id).collections.first.id, artwork_id: self.id)
+    end
 end

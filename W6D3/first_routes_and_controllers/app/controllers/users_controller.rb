@@ -21,13 +21,15 @@ class UsersController < ApplicationController
     end
     
     def update
-        User.update(params[:id], params.require(:user).permit(:username))
+        User.update(params[:id], user_param)
     end
     
     def destroy
+        render json: User.find(params[:id])
         User.destroy(params[:id])
     end
 
+    private
     def user_param
         params.require(:user).permit(:username)
     end

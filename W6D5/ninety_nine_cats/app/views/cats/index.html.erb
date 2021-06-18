@@ -1,0 +1,9 @@
+<marquee behavior="" direction="">Look at all these chickens!!!</marquee>
+<marquee behavior="" direction="">One Night Only!!!</marquee>
+
+<ul>
+  <% @cats.each do |cat| %>
+  <%= render 'cat', cat: cat, form: :index %>
+  <br/>
+  <% end %>
+</ul>

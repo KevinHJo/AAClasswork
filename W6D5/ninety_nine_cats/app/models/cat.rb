@@ -15,14 +15,14 @@
 require 'action_view'
 
 class Cat < ApplicationRecord
-    COLORS = ['blank', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'brown', 'black', 'white', 'gray', 'clear', 'tie-dye', 'glitter', 'pink', 'multicolor', 'gold', 'silver', 'black and white']
+    COLORS = ['blank', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'brown', 'black', 'white', 'gray', 'clear', 'tie-dye', 'glitter', 'pink', 'multicolor', 'gold', 'silver', 'black and white', 'naked']
 
     include ActionView::Helpers::DateHelper
 
     validates :birth_date, presence: true
     validates :color, presence: true, inclusion: { in: COLORS }
     validates :name, presence: true
-    validates :sex, presence: true, inclusion: { in: %w(m f t) }
+    validates :sex, presence: true, inclusion: { in: %w(m f t n) }
     validates :description, presence: true
 
     def age

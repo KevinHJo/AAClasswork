@@ -1,0 +1,15 @@
+
+
+<li>Name: <%= cat.name %></li>
+<li>Age: <%= cat.age %></li>
+<li>Color: <%= cat.color %></li>
+<li>Sex: <%= cat.sex %></li>
+<li>About this cat: <%= cat.description %></li>
+
+<% if form == :show %>
+<%#get request%>
+<a href="<%= cats_url %>">Back to the Cast of Cats the Musical!</a>
+<% else %>
+<a href="<%= cat_url(cat) %>">Look at the cat!</a>
+<br/>
+<% end %>

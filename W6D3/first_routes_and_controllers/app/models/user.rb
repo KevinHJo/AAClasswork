@@ -38,6 +38,9 @@ class User < ApplicationRecord
         foreign_key: :author_id,
         dependent: :destroy
 
+    has_many :likes,
+        foreign_key: :author_id
+
     def save!
         super
         Collection.create(name: "#{self.username}\'s collection", user_id: self.id)

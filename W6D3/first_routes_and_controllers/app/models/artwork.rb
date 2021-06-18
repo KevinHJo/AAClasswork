@@ -34,6 +34,11 @@ class Artwork < ApplicationRecord
         foreign_key: :artwork_id,
         dependent: :destroy
 
+
+    has_many :likes,
+        as: :likeable
+
+
     def save!
         super
         ArtworkCollection.create(collection_id: User.find(self.artist_id).collections.first.id, artwork_id: self.id)

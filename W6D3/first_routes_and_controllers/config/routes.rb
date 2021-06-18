@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :artworks, only: [:create, :show, :update, :destroy]
   resources :artwork_shares, only: [:create, :destroy]
   resources :comments, only: [:index, :create, :destroy]
-
+  resources :likes, only: [:index, :create, :destroy]
+  
   get '/users/:user_id/artworks', to: 'artworks#index'
 
   # get '/users', to: 'users#index'#, as: 'users'

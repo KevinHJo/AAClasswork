@@ -1,6 +1,16 @@
 class CommentsController < ApplicationController
+    
     def index
-        render json: Comment.all
+
+        if params['user'].nil? && params['artwork'].nil?
+            render plain: 'error'
+        elsif params['user'].nil?
+            comment = Comment.where(artwork_id: params['artwork']['id'])
+            render json: comment
+        else
+            comment = Comment.where(author_id: params['user']['id'])
+            render json: comment            
+        end
     end
 
     def create

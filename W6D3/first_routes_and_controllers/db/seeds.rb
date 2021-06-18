@@ -49,6 +49,13 @@ comment2 = Comment.create!(author_id: kevin.id, body: 'good', artwork_id: art1.i
 comment3 = Comment.create!(author_id: mike.id, body: 'gross', artwork_id: art2.id)
 comment4 = Comment.create!(author_id: kiet.id, body: 'no u', artwork_id: art2.id)
 
+#Likes
+like1 = Like.create!(likeable_type: 'Comment', likeable_id: comment1.id, author_id: ben.id)
+like2 = Like.create!(likeable_type: 'Comment', likeable_id: comment2.id, author_id: kevin.id)
+like3 = Like.create!(likeable_type: 'Comment', likeable_id: comment3.id, author_id:coco.id)
+like4 = Like.create!(likeable_type: 'Artwork', likeable_id: art1.id, author_id:coco.id)
+like5 = Like.create!(likeable_type: 'Artwork', likeable_id: art2.id, author_id:coco.id)
+
 #Collections
 # collection1 = Collection.create!(user_id: kevin.id, name: 'kevin collection')
 # collection2 = Collection.create!(user_id: ben.id, name: 'ben collection')

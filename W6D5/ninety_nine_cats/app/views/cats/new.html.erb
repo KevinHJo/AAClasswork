@@ -1,0 +1,26 @@
+<h2>Create a cat!!!</h2>
+
+<form action="<%= cats_url %>" method="post">
+<br>
+<label for="cat_name">Name:</label>
+    <input type="text", id="cat_name" name="cat[name]" value="<%= @cat.name %>">
+<br>
+<label for="cat_birthday">Birthday (YYYY/MM/DD):</label>
+    <input type="text", id="cat_birthday" birthday="cat[birth_date]" value="<%= @cat.birth_date %>">
+<br>
+<label for="cat_color">Color:</label>
+    <select name="colors" id="cat_color">
+        <option disabled selected>Blank</option>
+        <option value="red">Red</option>
+        <option value="orange">Orange</option>
+        <option value="yellow">Yellow</option>
+    </select>
+<br>
+<!-- <label for="cat_sex">Sex:</label>
+<label> 
+    <input type="radio">
+</label> -->
+    <input type="submit" value="Create Cat">
+</form>
+
+<!-- COLORS = ['blank', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'brown', 'black', 'white', 'gray', 'clear', 'tie-dye', 'glitter', 'pink', 'multicolor', 'gold', 'silver', 'black and white', 'naked'] -->

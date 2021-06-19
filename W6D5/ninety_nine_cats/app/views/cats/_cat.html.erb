@@ -1,15 +1,34 @@
+<table>
+    <thead>
+        <tr>
+            <th colspan='2'><%= cat.name %></th>
+        </tr>
+    </thead>
 
+    <tbody>
+        <tr>
+            <td>Age</td>
+            <td><%= cat.age %></td>
+        </tr>
 
-<li>Name: <%= cat.name %></li>
-<li>Age: <%= cat.age %></li>
-<li>Color: <%= cat.color %></li>
-<li>Sex: <%= cat.sex %></li>
-<li>About this cat: <%= cat.description %></li>
+        <tr>
+            <td>Color</td>
+            <td><%= cat.color %></td>
+        </tr>
+
+        <tr>
+            <td>Sex</td>
+            <td><%= cat.sex %></td>
+        </tr>
+        
+    </tbody>
+    <caption>About this cat: <%= cat.description %></caption>
+<table>
 
 <% if form == :show %>
 <%#get request%>
-<a href="<%= cats_url %>">Back to the Cast of Cats the Musical!</a>
+    <a href="<%= cats_url %>">Back to the Cast of Cats the Musical!</a>
 <% else %>
-<a href="<%= cat_url(cat) %>">Look at the cat!</a>
-<br/>
+    <a href="<%= cat_url(cat) %>">Look at the cat!</a>
+    <br/>
 <% end %>

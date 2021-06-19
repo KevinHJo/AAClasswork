@@ -1,25 +1,41 @@
-<h2>Create a cat!!!</h2>
+<marquee scrollamount=500>BUILD A CAT!!!</marquee>
 
 <form action="<%= cats_url %>" method="post">
-<br>
-<label for="cat_name">Name:</label>
-    <input type="text", id="cat_name" name="cat[name]" value="<%= @cat.name %>">
-<br>
-<label for="cat_birthday">Birthday (YYYY/MM/DD):</label>
-    <input type="text", id="cat_birthday" birthday="cat[birth_date]" value="<%= @cat.birth_date %>">
-<br>
-<label for="cat_color">Color:</label>
-    <select name="colors" id="cat_color">
-        <option disabled selected>Blank</option>
-        <option value="red">Red</option>
-        <option value="orange">Orange</option>
-        <option value="yellow">Yellow</option>
-    </select>
-<br>
-<!-- <label for="cat_sex">Sex:</label>
-<label> 
-    <input type="radio">
-</label> -->
+    <label for="cat_name">Name:</label>
+        <input type="text", id="cat_name" name="cat[name]" value="<%= @cat.name %>">
+    
+    <br>
+
+    <label for="cat_birthday">Birthday:</label>
+        <input type="date", id="cat_birthday" name="cat[birth_date]" value="<%= @cat.birth_date %>">
+    
+    <br>
+
+    <label for="cat_color">Color:</label>
+        <select name="cat[color]" id="cat_color">
+            <option disabled selected>--select a color--</option>
+            <option value="red">Red</option>
+            <option value="orange">Orange</option>
+            <option value="yellow">Yellow</option>
+        </select>
+
+    <br>x
+
+    <label for="cat_sex">Sex:</label>
+        <label for="M">Male</label>
+            <input type="radio" id="M" name="cat_sex" value='m'>
+        <label for="F">Female</label>
+            <input type="radio" id="F" name="cat_sex" value='f'>
+        <label for="N">Non-binary</label>
+            <input type="radio" id="N" name="cat_sex" value='n'>
+
+    <br> 
+
+    <label for="cat_desctiption">About:</label>
+    <textarea name="cat[description]"></textarea>
+
+    <br>
+    
     <input type="submit" value="Create Cat">
 </form>
 

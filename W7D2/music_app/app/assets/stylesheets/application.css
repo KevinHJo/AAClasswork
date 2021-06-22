@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+ header h1 {
+     font-family: Copperplate, fantasy;
+     text-align: center;
+ }
+
+ header div {
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+ }
+
+ header form input[type="submit"] {
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    padding: 3px;
+    color:cornsilk;
+ }
+
+ a {
+    background-color: cornflowerblue;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 5px;
+    color:cornsilk;
+    text-decoration:none;
+    margin: 3px 5px;
+    box-shadow: 1px 1px;
+ }
+
+ body {
+     background-color: darkgray;
+ }

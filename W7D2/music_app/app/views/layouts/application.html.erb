@@ -9,6 +9,26 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <h1>Music App</h1>
+    
+    <div>
+      <% if logged_in? %>
+        <p>Logged in as: <%= current_user.email %></p>
+    </div>
+    
+    <div>    
+        <form action="<%= session_url %>" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Sign Out">
+        </form>
+      <% else %>
+        <a href="<%= new_session_url %>" id="signin">Sign in</a>
+        <a href="<%= new_user_url %>" id="signout">Sign up</a>
+      <% end %>
+    </div>
+  </header>
+
   <body>
     <%= yield %>
   </body>

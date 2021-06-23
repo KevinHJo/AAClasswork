@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :require_logged_out, only: [:new, :create]
+
     def new
         @user = User.new
         render :new
@@ -8,8 +10,10 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
 
         if @user.save
-            redirect_to user_url(@user)
+            log_in_user!(@user)
+            redirect_to bands_url
         else
+            render :new
         end
     end
 

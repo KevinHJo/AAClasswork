@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
         @current_user = nil
     end
 
-    # def require_logged_out
-    #     redirect_to CHANGEME unless logged_in?
-    # end
+    def require_logged_out
+        redirect_to bands_url if logged_in?
+    end
 end

@@ -50,6 +50,7 @@ GEM
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    bcrypt (3.1.16)
     better_errors (2.9.1)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -119,6 +120,8 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.7)
+    nokogiri (1.11.7-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.11.7-x86_64-linux)
       racc (~> 1.4)
     pg (1.2.3)
@@ -230,10 +233,12 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
   annotate
+  bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)
@@ -265,4 +270,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   2.2.17
+   2.2.19

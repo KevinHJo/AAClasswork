@@ -10,6 +10,4 @@ RSpec.describe User, type: :model do
   it { should validate_length_of(:password).is_at_least(6) }
   it { should validate_uniqueness_of(:username) }
   it { should validate_uniqueness_of(:session_token) }
-
-
 end

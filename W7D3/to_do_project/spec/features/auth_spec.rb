@@ -45,8 +45,8 @@ feature 'logging out' do
         visit new_session_url
         fill_in "username", :with => "test"
         fill_in "password", :with => "password"
-        click_on "Sign In"
-        click_on "Sign Out"
+        click_button "Sign In"
+        click_button "Sign Out"
         expect(page).to_not have_content "test" 
     end
 

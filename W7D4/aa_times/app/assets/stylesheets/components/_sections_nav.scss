@@ -1,0 +1,44 @@
+.sections {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-bottom: 1px solid $light-gray;
+	position: relative;
+}
+
+.sections-links {
+	display: flex;
+	font-family: $sans-serif;
+	font-size: 13px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	li {
+		margin-left: 10px;
+	}
+
+	button {
+		background: none;
+		padding: 0px;
+		color: #000;
+		font-weight: 700;
+		border: none;
+        margin-right: 10px;
+	}
+
+	button:hover {
+		background-color: $lightest-gray;
+	}
+
+	a:hover {
+		text-decoration:underline;
+	}
+
+	i {
+		margin-right: 5px;
+	}
+
+	strong {
+		color: green;
+	}
+}

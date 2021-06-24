@@ -32,16 +32,16 @@ RSpec.describe UsersController, type: :controller do
         context 'with invalid params' do
             before(:each) { post :create, params: invalid_params }
             
-            it 'redirects to new user form' do
-                expect(response).to redirect_to(new_user_url)
+            it 'renders to new user form' do
+                expect(response).to render_template(:new)
             end
         end
     end
 
     describe 'GET #show' do
-        it 'renders correct user\'s page' do
-            user = User.create!(username: 'test', password: 'password')
-            get :show, id: user.id
+        it 'renders show template' do
+            User.create!(username: 'test', password: 'password')
+            get :show, params: { id: 1 }
             
             expect(response).to render_template(:show)
         end

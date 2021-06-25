@@ -1,0 +1,24 @@
+<h1><%= @sub.title %></h1>
+
+<h2>Description</h2>
+    <p><%= @sub.description %></p>
+    
+<!-- <div>
+    <ul>
+        <% @sub.posts.each do |post| %>
+            <li><a href="<%= post_url(post) %>"><%= post.title %></a></li>
+        
+        <% end %>
+        
+    </ul>
+</div> -->
+
+
+<div>
+    <form action="<%= sub_url(@sub) %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+        <input type="submit" value="Delete">
+    </form>
+</div>

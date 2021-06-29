@@ -9,7 +9,7 @@ describe Session do
 
   it 'deserializes json cookie if one exists' do
     req.cookies.merge!(cook)
-    session = Session.new(req)
+    sessionqui = Session.new(req)
     expect(session['xyz']).to eq('abc')
   end
 

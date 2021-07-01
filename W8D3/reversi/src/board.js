@@ -206,7 +206,6 @@ Board.prototype.hasMove = function (color) {
 };
 
 
-
 /**
  * Checks if both the white player and
  * the black player are out of moves.

@@ -1,0 +1,19 @@
+#game ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+}
+
+#game ul li {
+    border: 1px solid white;
+    padding: 50px;
+    background-color: gray;
+}
+
+#game ul li:hover {
+    background-color: yellow;
+}
+
+ul {
+    list-style: none;
+}

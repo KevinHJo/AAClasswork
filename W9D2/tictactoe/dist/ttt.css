@@ -17,3 +17,8 @@
 ul {
     list-style: none;
 }
+
+#game ul li.marked {
+    background-color: white;
+    padding: 41px 44.2px;
+}

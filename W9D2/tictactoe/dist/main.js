@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\") // require appropriate file\nconst Game = __webpack_require__(/*! ../ttt_node/game */ \"./ttt_node/game.js\")// require appropriate file\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const el = document.getElementById(\"game\");\n  const game = new Game();\n  const view = new View(game, el);\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\") // require appropriate file\nconst Game = __webpack_require__(/*! ../ttt_node/game */ \"./ttt_node/game.js\")// require appropriate file\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const el = document.getElementById(\"game\");\n  const game = new Game();\n  const view = new View(game, el);\n  view.bindEvents();\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\") 
   \*************************/
 /***/ ((module) => {
 
-eval("class View {\n  constructor(game, el) {\n    this.game = game;\n    this.setupBoard(el);\n  }\n\n  setupBoard(el) {\n    const gameGrid = document.createElement('ul');\n    el.appendChild(gameGrid);\n\n    for (let i=0; i < 3; i++) {\n      for (let j=0; j < 3; j++) {\n        let cell = document.createElement('li');\n        cell.dataset.position = [i, j];\n        gameGrid.appendChild(cell);\n      }\n    }\n  };\n  \n  bindEvents() {}\n\n  handleClick(e) {}\n\n  makeMove(square) {}\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, el) {\n    this.game = game;\n    this.setupBoard(el);\n    this.cells = document.querySelector('#game ul');\n  }\n\n  \n  setupBoard(el) {\n    const gameGrid = document.createElement('ul');\n    el.appendChild(gameGrid);\n\n    for (let i=0; i < 3; i++) {\n      for (let j=0; j < 3; j++) {\n        let cell = document.createElement('li');\n        cell.dataset.position = [i, j];\n        gameGrid.appendChild(cell);\n      }\n    }\n  };\n  \n  \n  bindEvents() {\n    this.cells.addEventListener('click',this.handleClick.bind(this));\n  }\n\n  handleClick(e) {\n    console.log(this);\n    let pos = e.target.dataset.position.split(\",\")\n    pos = pos.map( ele => parseInt(ele) );\n    this.game.playMove(pos);\n    const mark = document.createTextNode(this.game.currentPlayer.toUpperCase());\n    e.target.appendChild(mark);\n    this.makeMove(e.target);\n\n    \n  }\n\n  makeMove(square) {\n    square.classList.toggle(\"marked\");\n  }\n  \n\n}\n\n\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ }),
 

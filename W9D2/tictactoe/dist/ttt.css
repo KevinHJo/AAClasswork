@@ -1,3 +1,8 @@
+#game {
+    display: flex;
+    justify-content: center;
+}
+
 #game ul {
     display: flex;
     flex-wrap: wrap;
@@ -21,4 +26,8 @@ ul {
 #game ul li.marked {
     background-color: white;
     padding: 41px 44.2px;
+}
+
+body {
+    text-align: center;
 }

@@ -19,21 +19,34 @@ class View {
     }
   };
   
-  
   bindEvents() {
-    this.cells.addEventListener('click',this.handleClick.bind(this));
+    this.boundHandleClick = this.handleClick.bind(this)
+    this.cells.addEventListener('click', this.boundHandleClick);
   }
 
   handleClick(e) {
-    console.log(this);
     let pos = e.target.dataset.position.split(",")
     pos = pos.map( ele => parseInt(ele) );
-    this.game.playMove(pos);
-    const mark = document.createTextNode(this.game.currentPlayer.toUpperCase());
-    e.target.appendChild(mark);
-    this.makeMove(e.target);
-
     
+    if (e.target.classList.contains('marked')) {
+      alert('This is not a valid move')
+    } else {
+      this.makeMove(e.target);
+    }
+
+    const mark = document.createTextNode(this.game.currentPlayer.toUpperCase());
+    this.game.playMove(pos);
+    e.target.appendChild(mark);
+
+    if (this.game.winner()) {
+      const div = document.querySelector('#game');
+      const winMessage = document.createElement('p');
+      const message = document.createTextNode(`Congratulations ${this.game.winner()}`);
+      winMessage.appendChild(message);
+      div.appendChild(winMessage);
+
+      this.cells.removeEventListener('click', this.boundHandleClick)
+    }
   }
 
   makeMove(square) {

@@ -19,7 +19,6 @@ MovingObject.prototype.draw = function(ctx) {
 MovingObject.prototype.move = function() {
     this.position[0] += this.velocity[0];
     this.position[1] += this.velocity[1];
-    console.log(this.position)
     this.position = this.game.wrap(this.position)
     this.position = this.game.wrap(this.position)
 }
@@ -29,7 +28,6 @@ MovingObject.prototype.isCollidedWith = function(otherObject) {
 };
 
 MovingObject.prototype.collideWith = function(otherObject) {
-    this.game.remove(otherObject);
-    this.game.remove(this);
+    
 }
 module.exports = MovingObject;

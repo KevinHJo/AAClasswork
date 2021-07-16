@@ -1,8 +1,18 @@
 .clock {
-    width: 100px;
+    width: 500px;
     margin: auto;
     margin-top: 50px;
     font-family:cursive;
     font-size: 30px;
-    
+}
+
+.date {
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    border: 2px solid black;
+}
+.date p {
+    display: flex;
+    justify-content: space-between;
 }

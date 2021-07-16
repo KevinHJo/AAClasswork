@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 class Clock extends React.Component {
     constructor(props) {
@@ -14,8 +14,16 @@ class Clock extends React.Component {
         return (
             <div className='clock'>
                 <h1>Clock</h1>
-                <h3>{date.getHours()}:{date.getMinutes()}:{date.getSeconds()}</h3>
-                <h3>{date.getDay()} {date.getMonth()} {date.getYear()}</h3>
+                <div className="date">
+                    <p>
+                        <span>Time:</span>   
+                        <span>{date.getHours()}:{date.getMinutes()}:{date.getSeconds()}</span>   
+                    </p>
+                    <p>
+                        <span>Date:</span>
+                        <span>{date.toDateString()}</span>
+                    </p>
+                </div>
             </div>
         );
     };

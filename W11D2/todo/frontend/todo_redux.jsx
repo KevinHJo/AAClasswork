@@ -6,7 +6,6 @@ import configureStore from './store/store';
 document.addEventListener("DOMContentLoaded", () => {
     const store = configureStore();
     window.store = store;
-    window.store.getState();
     window.receiveTodo = receiveTodo;
     window.receiveTodos = receiveTodos;
 });

@@ -166,11 +166,13 @@ var todosReducer = function todosReducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
   var nextState = Object.assign({}, state);
-  console.dir(nextState);
 
   switch (action.type) {
     case _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TODOS:
-      nextState[action.todos.id] = action.todos;
+      nextState = {};
+      action.todos.forEach(function (todo, i) {
+        nextState[todo.id] = todo;
+      });
       return nextState;
 
     case _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TODO:
@@ -30799,7 +30801,6 @@ __webpack_require__.r(__webpack_exports__);
 document.addEventListener("DOMContentLoaded", function () {
   var store = (0,_store_store__WEBPACK_IMPORTED_MODULE_3__.default)();
   window.store = store;
-  window.store.getState();
   window.receiveTodo = _actions_todo_actions__WEBPACK_IMPORTED_MODULE_2__.receiveTodo;
   window.receiveTodos = _actions_todo_actions__WEBPACK_IMPORTED_MODULE_2__.receiveTodos;
 });

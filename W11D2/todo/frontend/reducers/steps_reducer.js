@@ -20,6 +20,7 @@ const initialState = {
 const stepsReducer = (state = initialState, action) => {
     Object.freeze(state);
     let nextState = Object.assign({}, state);
+    
     switch (action.type) {
         case REMOVE_STEP:
             delete nextState[action.step.id]

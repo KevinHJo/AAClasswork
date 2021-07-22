@@ -366,8 +366,16 @@ var TodoForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "updateStatus",
     value: function updateStatus(e) {
+      var value;
+
+      if (e.target.value === 'true') {
+        value = true;
+      } else if (e.target.value === 'false') {
+        value = false;
+      }
+
       this.setState({
-        done: e.target.value
+        done: value
       });
     }
   }, {
@@ -385,22 +393,6 @@ var TodoForm = /*#__PURE__*/function (_React$Component) {
         name: "body",
         value: this.state.body,
         onChange: this.updateBody
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Done:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        htmlFor: "true"
-      }, "True"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        type: "radio",
-        name: "done",
-        value: true,
-        id: "true",
-        onChange: this.updateStatus
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        htmlFor: "false"
-      }, "False"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        type: "radio",
-        name: "done",
-        value: false,
-        id: "false",
-        onChange: this.updateStatus
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "submit",
         value: "Add Todo!"
@@ -438,6 +430,8 @@ var TodoList = function TodoList(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, todos.map(function (todo) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_list_item__WEBPACK_IMPORTED_MODULE_1__.default, {
       todo: todo,
+      removeTodo: props.removeTodo,
+      receiveTodo: props.receiveTodo,
       key: todo.id
     });
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_list_todo_form__WEBPACK_IMPORTED_MODULE_2__.default, {
@@ -479,6 +473,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     receiveTodo: function receiveTodo(todo) {
       return dispatch((0,_actions_todo_actions__WEBPACK_IMPORTED_MODULE_2__.receiveTodo)(todo));
+    },
+    removeTodo: function removeTodo(todo) {
+      return dispatch((0,_actions_todo_actions__WEBPACK_IMPORTED_MODULE_2__.removeTodo)(todo));
     }
   };
 };
@@ -529,15 +526,51 @@ var TodoListItem = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(TodoListItem);
 
   function TodoListItem(props) {
+    var _this;
+
     _classCallCheck(this, TodoListItem);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.updateStatusButton = _this.updateStatusButton.bind(_assertThisInitialized(_this));
+    _this.updateStatus = _this.updateStatus.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(TodoListItem, [{
+    key: "updateStatusButton",
+    value: function updateStatusButton(status) {
+      if (status) {
+        return 'Undo';
+      } else {
+        return 'Done';
+      }
+    }
+  }, {
+    key: "updateStatus",
+    value: function updateStatus() {
+      var todo = this.props.todo;
+
+      if (todo.done) {
+        todo.done = false;
+      } else {
+        todo.done = true;
+      }
+
+      this.props.receiveTodo(todo);
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, this.props.todo.title);
+      var _this2 = this;
+
+      var todo = this.props.todo;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, todo.title, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: function onClick() {
+          return _this2.props.removeTodo(todo);
+        }
+      }, "Delete Todo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.updateStatus
+      }, this.updateStatusButton(todo.done)));
     }
   }]);
 
@@ -694,7 +727,7 @@ var todosReducer = function todosReducer() {
       return nextState;
 
     case _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_TODO:
-      delete nextState[action.step.id];
+      delete nextState[action.todo.id];
       return nextState;
 
     default:
@@ -34153,14 +34186,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  var store = (0,_store_store__WEBPACK_IMPORTED_MODULE_3__.default)(); // window.store = store;
-  // window.receiveTodo = receiveTodo;
-  // window.receiveTodos = receiveTodos;
-  // window.removeTodo = removeTodo;
-  // window.receiveStep = receiveStep;
-  // window.receiveSteps = receiveSteps;
-  // window.removeStep = removeStep;
-
+  var store = (0,_store_store__WEBPACK_IMPORTED_MODULE_3__.default)();
+  window.store = store;
+  window.receiveTodo = _actions_todo_actions__WEBPACK_IMPORTED_MODULE_4__.receiveTodo;
+  window.receiveTodos = _actions_todo_actions__WEBPACK_IMPORTED_MODULE_4__.receiveTodos;
+  window.removeTodo = _actions_todo_actions__WEBPACK_IMPORTED_MODULE_4__.removeTodo;
+  window.receiveStep = _actions_step_actions__WEBPACK_IMPORTED_MODULE_5__.receiveStep;
+  window.receiveSteps = _actions_step_actions__WEBPACK_IMPORTED_MODULE_5__.receiveSteps;
+  window.removeStep = _actions_step_actions__WEBPACK_IMPORTED_MODULE_5__.removeStep;
   var content = document.getElementById('content');
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_frontend_components_root__WEBPACK_IMPORTED_MODULE_2__.default, {
     store: store

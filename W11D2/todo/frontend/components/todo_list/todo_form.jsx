@@ -36,7 +36,14 @@ class TodoForm extends React.Component {
     }
     
     updateStatus(e) {
-        this.setState({done: e.target.value})
+        let value;
+        if (e.target.value === 'true') {
+            value = true;
+        } else if (e.target.value === 'false') {
+            value = false;
+        }
+
+        this.setState({done: value})
     }
 
     render() {
@@ -55,12 +62,6 @@ class TodoForm extends React.Component {
                         value={this.state.body} 
                         onChange = {this.updateBody}
                         />
-                </label>
-                <label>Done:
-                    <label htmlFor="true">True</label>
-                    <input type="radio" name="done" value={true} id='true' onChange = {this.updateStatus}/>
-                    <label htmlFor="false">False</label>
-                    <input type="radio" name="done" value={false} id='false' onChange={this.updateStatus}/>
                 </label>
 
                 <input type="submit" value="Add Todo!"/>

@@ -7,13 +7,13 @@ import { receiveStep, receiveSteps, removeStep } from './actions/step_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
     const store = configureStore();
-    // window.store = store;
-    // window.receiveTodo = receiveTodo;
-    // window.receiveTodos = receiveTodos;
-    // window.removeTodo = removeTodo;
-    // window.receiveStep = receiveStep;
-    // window.receiveSteps = receiveSteps;
-    // window.removeStep = removeStep;
+    window.store = store;
+    window.receiveTodo = receiveTodo;
+    window.receiveTodos = receiveTodos;
+    window.removeTodo = removeTodo;
+    window.receiveStep = receiveStep;
+    window.receiveSteps = receiveSteps;
+    window.removeStep = removeStep;
 
     const content = document.getElementById('content');
     ReactDOM.render(<Root store={store}/>, content);

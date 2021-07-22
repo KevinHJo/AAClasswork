@@ -531,8 +531,13 @@ var TodoListItem = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, TodoListItem);
 
     _this = _super.call(this, props);
+    _this.state = {
+      detail: false
+    };
     _this.updateStatusButton = _this.updateStatusButton.bind(_assertThisInitialized(_this));
     _this.updateStatus = _this.updateStatus.bind(_assertThisInitialized(_this));
+    _this.toggleDetail = _this.toggleDetail.bind(_assertThisInitialized(_this));
+    _this.renderDetail = _this.renderDetail.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -559,18 +564,30 @@ var TodoListItem = /*#__PURE__*/function (_React$Component) {
       this.props.receiveTodo(todo);
     }
   }, {
+    key: "toggleDetail",
+    value: function toggleDetail() {
+      if (this.state.detail) {
+        this.state.detail = false;
+      } else {
+        this.state.detail = true;
+      }
+    }
+  }, {
+    key: "renderDetail",
+    value: function renderDetail() {
+      if (this.state.detail) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(TodoDetailView, null);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       var todo = this.props.todo;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, todo.title, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        onClick: function onClick() {
-          return _this2.props.removeTodo(todo);
-        }
-      }, "Delete Todo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        onClick: this.toggleDetail
+      }, todo.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.updateStatus
-      }, this.updateStatusButton(todo.done)));
+      }, this.updateStatusButton(todo.done)), this.renderDetail());
     }
   }]);
 
@@ -615,10 +632,16 @@ var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "allTodos": () => (/* binding */ allTodos)
+/* harmony export */   "allTodos": () => (/* binding */ allTodos),
+/* harmony export */   "stepsByTodoId": () => (/* binding */ stepsByTodoId)
 /* harmony export */ });
 var allTodos = function allTodos(state) {
   return Object.values(state.todos);
+};
+var stepsByTodoId = function stepsByTodoId(state, todoId) {
+  return Object.values(state.steps).filter(function (step) {
+    step.todoId === todoId;
+  });
 };
 
 /***/ }),

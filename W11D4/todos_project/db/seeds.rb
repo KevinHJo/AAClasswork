@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Todo.destroy_all
+
+todos = Todo.create([
+    {title: 'anything', body: "do something", done: false},
+    {title: 'sleep', body: "on time", done: true},
+    {title: 'eat', body: "alot of food", done: false},
+    {title: 'pee', body: "every other hour", done: true},
+    {title: 'poop', body: "in the toilet everyday", done: false},
+    {title: 'wake up', body: "maybe... sometimes", done: false}
+])
